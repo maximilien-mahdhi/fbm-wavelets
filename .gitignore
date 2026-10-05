@@ -1,0 +1,20 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+.python-version
+uv.lock
+
+# Tool caches
+.pytest_cache/
+.ruff_cache/
+
+# Generated outputs (results/ is kept for the README figures)
+.ipynb_checkpoints/
+.DS_Store
