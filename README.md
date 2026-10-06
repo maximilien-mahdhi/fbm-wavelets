@@ -15,8 +15,10 @@ Exact sampling · three synthesis methods · Hurst estimation (DWT and CWT) · H
       <sub><a href="https://github.com/maximilien-mahdhi">GitHub</a> · <a href="https://www.linkedin.com/in/maximilien-mahdhi">LinkedIn</a></sub>
     </td>
     <td align="center" valign="middle" width="260">
+      <a href="https://github.com/aledev480"><img src="https://github.com/aledev480.png" width="72" alt="Alexis LE MEUR"></a><br>
       <b>Alexis LE MEUR</b><br>
       <sub>Contributor</sub>
+      <br><sub><a href="https://github.com/aledev480">GitHub</a></sub>
     </td>
   </tr>
 </table>
