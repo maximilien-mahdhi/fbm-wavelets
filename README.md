@@ -26,6 +26,7 @@ Exact sampling · three synthesis methods · Hurst estimation (DWT and CWT) · H
 ![CI](https://img.shields.io/github/actions/workflow/status/maximilien-mahdhi/fbm-wavelets/ci.yml?style=for-the-badge&label=CI)
 ![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
+![PyWavelets](https://img.shields.io/badge/PyWavelets-6A1B9A?style=for-the-badge)
 ![SciPy](https://img.shields.io/badge/SciPy-8CAAE6?style=for-the-badge&logo=scipy&logoColor=white)
 ![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge)
 ![pytest](https://img.shields.io/badge/pytest-0A9EDC?style=for-the-badge&logo=pytest&logoColor=white)
@@ -57,7 +58,7 @@ Exact sampling · three synthesis methods · Hurst estimation (DWT and CWT) · H
 
 ## Overview
 
-A fractional Brownian motion $B^H_t$ is the unique centered Gaussian process with stationary increments that is self-similar with index $H \in (0, 1)$. The Hurst parameter $H$ controls the roughness of the paths and the memory of the increments. This repository gathers, in one tested package:
+A fractional Brownian motion $(B^H_t)_{t\geq 0}$ is the unique centered Gaussian process with stationary increments that is self-similar with index $H \in (0, 1)$. The Hurst parameter $H$ controls the roughness of the paths and the memory of the increments. This repository gathers, in one tested package:
 
 | Topic | What is implemented |
 | --- | --- |
