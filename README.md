@@ -434,15 +434,15 @@ Continuous integration runs linting and tests on Python 3.10 and 3.12 (LaTeX is 
 
 - A. Le Meur, M. Mahdhi, [*A Wavelet Analysis on Fractional Brownian Motion*](docs/A_Wavelet_Analysis_on_Fractional_Brownian_Motion_Le_Meur_Mahdhi.pdf), Project Study Report, supervised by K. Polisano, Université Grenoble Alpes, January 2026.
 
-1. P. Flandrin, *Wavelet Analysis and Synthesis of Fractional Brownian Motion*, IEEE Transactions on Information Theory, vol. 38, no. 2, pp. 910–917, 1992. [doi](https://doi.org/10.1109/18.119751)
-2. J.-F. Le Gall, *Brownian Motion, Martingales, and Stochastic Calculus*, Graduate Texts in Mathematics, vol. 274, Springer, 2016. [doi](https://doi.org/10.1007/978-3-319-31089-3)
-3. A. Cohen and J. Istas, *Fractional Fields and Applications*, Springer, 2013. [doi](https://doi.org/10.1007/978-3-642-36739-7)
-4. S. Mallat, *A Wavelet Tour of Signal Processing: The Sparse Way*, 3rd edition, Academic Press, 2009.
-5. B. Mandelbrot and J. W. Van Ness, *Fractional Brownian Motions, Fractional Noises and Applications*, SIAM Review, vol. 10, no. 4, pp. 422–437, 1968. [doi](https://doi.org/10.1137/1010093)
-6. G. W. Wornell, *Wavelet-Based Representations for the 1/f Family of Fractal Processes*, IEEE Transactions on Information Theory, vol. 36, no. 4, pp. 785–800, 1990.
-7. P. Flandrin, *On the spectrum of fractional Brownian motions*, IEEE Transactions on Information Theory, vol. 35, no. 1, pp. 197–199, 1989. [doi](https://doi.org/10.1109/18.42195)
-8. P. Flandrin, *Représentations Temps-Fréquence des Signaux Non Stationnaires*, Traitement du Signal, vol. 6, no. 2, pp. 89–101, 1989.
-9. P. Flandrin, *Sur les conditions physiques assurant l'unicite de la representation de wigner-ville comme representation temps-frequence*, GRETSI, 1983.
-10. R. M. Loynes, *On the Concept of the Spectrum for Non-Stationary Processes*, Journal of the Royal Statistical Society. Series B, 1967. [doi](https://doi.org/10.1111/j.2517-6161.1968.tb01504.x)
-11. B. Escudié, J. Gréa, *Sur une formulation générale de la représentation en temps et fréquence dans l'analyse des signaux*, Comptes rendus de l'académie des sciences de Paris, série A, tome 283, p1049-1041, 1976.
-12. R. Davies, D. Harte, *Tests for Hurst effect*, Biometrika, 1987. [doi](https://doi.org/10.1093/biomet/74.1.95)
+1. P. Flandrin, [*Wavelet Analysis and Synthesis of Fractional Brownian Motion*](https://doi.org/10.1109/18.119751), IEEE Transactions on Information Theory, vol. 38, no. 2, pp. 910–917, 1992.
+2. J.-F. Le Gall, [*Brownian Motion, Martingales, and Stochastic Calculus*](https://doi.org/10.1007/978-3-319-31089-3), Graduate Texts in Mathematics, vol. 274, Springer, 2016.
+3. A. Cohen and J. Istas, [*Fractional Fields and Applications*](https://doi.org/10.1007/978-3-642-36739-7), Springer, 2013.
+4. S. Mallat, [*A Wavelet Tour of Signal Processing: The Sparse Way*](https://www.sciencedirect.com/book/9780123743701/a-wavelet-tour-of-signal-processing), 3rd edition, Academic Press, 2009.
+5. B. Mandelbrot and J. W. Van Ness, [*Fractional Brownian Motions, Fractional Noises and Applications*](https://doi.org/10.1137/1010093), SIAM Review, vol. 10, no. 4, pp. 422–437, 1968.
+6. G. W. Wornell, [*Wavelet-Based Representations for the 1/f Family of Fractal Processes*](https://sia.mit.edu/wp-content/uploads/2015/04/1990-wornell-it.pdf), IEEE Transactions on Information Theory, vol. 36, no. 4, pp. 785–800, 1990.
+7. P. Flandrin, [*On the spectrum of fractional Brownian motions*](https://doi.org/10.1109/18.42195), IEEE Transactions on Information Theory, vol. 35, no. 1, pp. 197–199, 1989.
+8. P. Flandrin, [*Représentations Temps-Fréquence des Signaux Non Stationnaires*](https://perso.ens-lyon.fr/patrick.flandrin/TS1989.pdf), Traitement du Signal, vol. 6, no. 2, pp. 89–101, 1989.
+9. P. Flandrin, [*Sur les conditions physiques assurant l'unicite de la representation de wigner-ville comme representation temps-frequence*](https://www.gretsi.fr/data/colloque/pdf/1983_001-0005_10624.pdf), GRETSI, 1983.
+10. R. M. Loynes, [*On the Concept of the Spectrum for Non-Stationary Processes*](https://doi.org/10.1111/j.2517-6161.1968.tb01504.x), Journal of the Royal Statistical Society. Series B, 1967.
+11. B. Escudié, J. Gréa, [*Sur une formulation générale de la représentation en temps et fréquence dans l'analyse des signaux*](https://gallica.bnf.fr/ark:/12148/bpt6k6422123p/f259.item), Comptes rendus de l'académie des sciences de Paris, série A, tome 283, p1049-1041, 1976.
+12. R. Davies, D. Harte, [*Tests for Hurst effect*](https://doi.org/10.1093/biomet/74.1.95), Biometrika, 1987.
