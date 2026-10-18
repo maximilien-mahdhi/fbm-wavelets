@@ -7,6 +7,8 @@ name = "fbmwavelets"
 version = "0.1.0"
 description = "Fractional Brownian motion: generation, wavelet synthesis, Hurst estimation and Haar correlations."
 readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
 requires-python = ">=3.10"
 dependencies = [
     "numpy>=1.24",
