@@ -79,7 +79,7 @@ git clone https://github.com/maximilien-mahdhi/fbm-wavelets.git
 cd fbm-wavelets
 python3 -m venv .venv
 source .venv/bin/activate
-pip install -e ".[dev]"
+pip install -e . --group dev
 ```
 
 Figures are rendered with LaTeX by default, which requires a LaTeX distribution:
@@ -415,7 +415,7 @@ fbm-wavelets/
 ### Development
 
 ```bash
-pip install -e ".[dev]"
+pip install -e . --group dev
 ruff check . && ruff format --check .
 pytest
 ```

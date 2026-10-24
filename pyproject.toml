@@ -17,11 +17,9 @@ dependencies = [
     "PyWavelets>=1.4",
     "fbm>=0.3",
     "rich>=13",
-    "pytest>=9.1.1",
-    "ruff>=0.16.10",
 ]
 
-[project.optional-dependencies]
+[dependency-groups]
 dev = ["pytest>=7", "ruff>=0.5"]
 
 [tool.hatch.build.targets.wheel]

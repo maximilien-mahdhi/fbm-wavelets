@@ -301,18 +301,16 @@ dependencies = [
     { name = "numpy", version = "2.2.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
     { name = "numpy", version = "2.4.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version == '3.11.*'" },
     { name = "numpy", version = "2.5.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
-    { name = "pytest" },
     { name = "pywavelets", version = "1.8.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
     { name = "pywavelets", version = "1.9.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version == '3.11.*'" },
     { name = "pywavelets", version = "1.10.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
     { name = "rich" },
-    { name = "ruff" },
     { name = "scipy", version = "1.15.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
     { name = "scipy", version = "1.17.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version == '3.11.*'" },
     { name = "scipy", version = "1.18.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
 ]
 
-[package.optional-dependencies]
+[package.dev-dependencies]
 dev = [
     { name = "pytest" },
     { name = "ruff" },
@@ -323,15 +321,16 @@ requires-dist = [
     { name = "fbm", specifier = ">=0.3" },
     { name = "matplotlib", specifier = ">=3.7" },
     { name = "numpy", specifier = ">=1.24" },
-    { name = "pytest", specifier = ">=9.1.1" },
-    { name = "pytest", marker = "extra == 'dev'", specifier = ">=7" },
     { name = "pywavelets", specifier = ">=1.4" },
     { name = "rich", specifier = ">=13" },
-    { name = "ruff", specifier = ">=0.16.10" },
-    { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.5" },
     { name = "scipy", specifier = ">=1.10" },
 ]
-provides-extras = ["dev"]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "pytest", specifier = ">=7" },
+    { name = "ruff", specifier = ">=0.5" },
+]
 
 [[package]]
 name = "fonttools"
