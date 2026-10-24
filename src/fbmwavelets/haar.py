@@ -6,10 +6,16 @@ import numpy as np
 
 
 def xi(lag: float | np.ndarray, hurst: float | np.ndarray) -> np.ndarray:
-    """Discrete Haar kernel :math:`\\xi_H[k]`, defined for every integer lag ``k``.
+    """Discrete Haar kernel ξ_H[k], defined for every integer lag k.
 
-    For ``k != 0`` it is the normalized fourth-order finite difference of ``|k|**(2H + 2)``;
-    for ``k = 0`` it equals ``(1 - 2**(-2H)) / ((H + 1)(2H + 1))``.
+    For k ≠ 0:
+
+        ξ_H[k] = ( |k−1|^(2H+2) − 4|k−½|^(2H+2) + 6|k|^(2H+2)
+                   − 4|k+½|^(2H+2) + |k+1|^(2H+2) ) / ((2H+1)(2H+2))
+
+    and for k = 0:
+
+        ξ_H[0] = (1 − 2^(−2H)) / ((H+1)(2H+1))
     """
     k = np.abs(np.asarray(lag, dtype=float))
     h = np.asarray(hurst, dtype=float)
@@ -32,10 +38,11 @@ def haar_correlation(
     hurst: float | np.ndarray,
     sigma_h: float = 1.0,
 ) -> np.ndarray:
-    """Correlation :math:`\\rho_j(n, m) = E[d_j[n] d_j[m]]` of Haar coefficients of an fBm.
+    """Correlation of the Haar wavelet coefficients of an fBm at scale j.
 
-    Equals ``sigma_H**2 / 2 * xi_H[n - m] * (2**j)**(2H + 1)``. Arguments are broadcast
-    against each other.
+        ρ_j(n, m) = E[d_j[n] d_j[m]] = (σ_H² / 2) · ξ_H[n − m] · (2^j)^(2H+1)
+
+    with ξ_H given by xi. Arguments are broadcast against each other.
     """
     amplitude = (2.0 ** np.asarray(j, dtype=float)) ** (2 * np.asarray(hurst, dtype=float) + 1)
     return sigma_h**2 / 2 * xi(lag, hurst) * amplitude

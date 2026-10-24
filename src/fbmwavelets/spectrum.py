@@ -8,9 +8,10 @@ import numpy as np
 def time_frequency_spectrum(
     t: np.ndarray | float, omega: np.ndarray | float, hurst: float, sigma_h: float = 1.0
 ) -> np.ndarray:
-    """Wavelet-based spectrum (WVSD) of an fBm.
+    """Wigner-Ville spectral density (WVSD) of an fBm.
 
-    Evaluates ``sigma_H**2 (1 - 2**(1 - 2H) cos(4 pi omega t)) / |2 pi omega|**(2H + 1)``.
+        S(t, ω) = σ_H² · (1 − 2^(1−2H) cos(4πωt)) / |2πω|^(2H+1)
+
     ``t`` and ``omega`` are broadcast against each other; ``omega`` must not contain zero.
     """
     t = np.asarray(t, dtype=float)

@@ -12,7 +12,12 @@ log = logging.getLogger(__name__)
 
 
 def rescale_variance(paths: np.ndarray, variance: float) -> np.ndarray:
-    """Rescale each series (row) so that its empirical variance equals ``variance``."""
+    """Rescale each series (row) so that its empirical variance equals ``variance``.
+
+    Each series x is mapped to
+
+        x · √(v / Var̂(x)),   v = variance
+    """
     return paths * np.sqrt(variance / paths.var(axis=-1, keepdims=True))
 
 

@@ -20,11 +20,14 @@ def wavelet_synthesis(
     wavelet: str = "db4",
     rng: np.random.Generator | int | None = None,
 ) -> np.ndarray:
-    """Heuristic wavelet synthesis of fBm on N = 2**J samples.
+    """Heuristic wavelet synthesis of fBm on N = 2^J samples.
 
-    The ``2**m`` detail coefficients at resolution level m (m = 0 is the coarsest) are
-    i.i.d. Gaussian with standard deviation ``2**(-(H + 1/2) * m)``; the path is rebuilt
-    with an inverse periodized DWT and shifted to start at zero.
+    At resolution level m (m = 0 is the coarsest), the 2^m detail coefficients are i.i.d.
+
+        d_m[k] ~ N(0, 2^(−(2H+1) m)),
+
+    i.e. with standard deviation 2^(−(H + ½) m). The path is rebuilt with an inverse
+    periodized DWT and shifted to start at zero.
     """
     gen = _rng(rng)
     n = 2**J
@@ -46,11 +49,12 @@ def wornell_synthesis(
 ) -> np.ndarray:
     """Wornell-type synthesis: a sum of dilated and shifted wavelets on [0, 1].
 
-    ``B(t) = sum_j sum_k 2**(j/2) * d_j[k] * psi(2**j t - k)`` where the detail
-    coefficients ``d_j[k]`` are independent centered Gaussians of variance
-    ``2**(-(2H + 1) j)``, i.e. a net amplitude ``2**(-j H)`` on ``psi(2**j t - k)``
-    (Wornell, 1990). The wavelet is evaluated by linear interpolation of its tabulated
-    version. The result starts at zero and has unit standard deviation.
+        B(t) = Σ_{j=0}^{J−1} Σ_k 2^(j/2) d_j[k] ψ(2^j t − k),
+        d_j[k] ~ N(0, 2^(−(2H+1) j)) independent,
+
+    i.e. a net amplitude 2^(−jH) on ψ(2^j t − k) (Wornell, 1990). The wavelet is
+    evaluated by linear interpolation of its tabulated version. The result starts
+    at zero and has unit standard deviation.
     """
     gen = _rng(rng)
     _, psi, grid = pywt.Wavelet(wavelet).wavefun(level=10)
@@ -70,11 +74,12 @@ def rmd_synthesis(
     J: int = 10,
     rng: np.random.Generator | int | None = None,
 ) -> np.ndarray:
-    """Random midpoint displacement on N = 2**J + 1 samples.
+    """Random midpoint displacement on N = 2^J + 1 samples.
 
-    At each level the midpoint of a segment is the average of its endpoints plus a
-    Gaussian displacement whose standard deviation is ``scale**H`` (``scale = 1`` at the
-    coarsest level), the scale being halved after every level.
+    At level ℓ (ℓ = 0 is the coarsest), the midpoint of each segment [a, b] is set to
+
+        x((a + b)/2) = (x(a) + x(b))/2 + σ_ℓ Z,   σ_ℓ = (2^(−ℓ))^H,   Z ~ N(0, 1).
+
     The result is normalized to unit standard deviation.
     """
     gen = _rng(rng)

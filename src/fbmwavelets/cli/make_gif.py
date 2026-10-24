@@ -20,6 +20,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.animation import FuncAnimation, PillowWriter
+from matplotlib.lines import Line2D
 
 from fbmwavelets.logger import setup_logging
 from fbmwavelets.plotting import configure_matplotlib
@@ -134,7 +135,7 @@ def main() -> None:
 
     ends = np.linspace(2, t.size, args.frames).astype(int)
 
-    def update(frame: int):
+    def update(frame: int) -> list[Line2D]:
         end = ends[frame]
         for line, (_, x, y) in zip(lines, paths, strict=True):
             line.set_data(x[:end], y[:end])

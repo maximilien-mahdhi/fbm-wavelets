@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from fbm import fgn
 from matplotlib.animation import FuncAnimation, PillowWriter
+from matplotlib.lines import Line2D
 
 log = logging.getLogger(__name__)
 
@@ -89,7 +90,7 @@ class Path:
         ax.legend(handles=[line], loc="upper left", bbox_to_anchor=(1.01, 1.0), frameon=False)
         frames = range(1, len(self.x), step)
 
-        def update(i: int):
+        def update(i: int) -> tuple[Line2D, Line2D]:
             line.set_data(self.x[:i, 0], self.x[:i, 1])
             head.set_data([self.x[i - 1, 0]], [self.x[i - 1, 1]])
             return line, head
@@ -116,9 +117,12 @@ class StochasticProcess(ABC):
 class FractionalBrownianMotion(StochasticProcess):
     """Multidimensional fBm with independent coordinates.
 
-    The increments of each coordinate are fractional Gaussian noise with
-    standard deviation ``delta * increment**hurst`` (exact Davies-Harte sampling).
-    For ``hurst = 0.5`` this is the standard Brownian motion.
+    With time step Δt = ``increment`` and scale δ = ``delta``, the increments of each
+    coordinate are fractional Gaussian noise of standard deviation
+
+        δ · (Δt)^H
+
+    (exact Davies-Harte sampling). For H = 1/2 this is the standard Brownian motion.
     """
 
     def __init__(

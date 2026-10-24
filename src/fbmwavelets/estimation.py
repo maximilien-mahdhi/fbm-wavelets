@@ -16,7 +16,11 @@ log = logging.getLogger(__name__)
 class HurstEstimate:
     """Result of a log-variance regression.
 
-    For fBm, ``E[d_j^2] ~ 2**(j (2H + 1))``, hence ``H = (slope - 1) / 2``.
+    For fBm, the detail coefficients at octave j satisfy
+
+        log₂ E[d_j[n]²] = (2H + 1) j + C,
+
+    so the slope s of the regression gives Ĥ = (s − 1) / 2.
     """
 
     hurst: float
@@ -46,8 +50,9 @@ def estimate_hurst_dwt(
 ) -> HurstEstimate:
     """Estimate H of an fBm path by regression on DWT detail coefficients.
 
-    The finest octave (j = 1) and the coarsest one are discarded because of
-    discretization and boundary effects.
+    The empirical second moment (1/N_j) Σ_n d_j[n]² is computed at each octave j,
+    and its log₂ is regressed on j (see HurstEstimate). The finest octave (j = 1)
+    and the coarsest one are discarded because of discretization and boundary effects.
 
     Parameters
     ----------
@@ -77,7 +82,8 @@ def estimate_hurst_cwt(
 ) -> HurstEstimate:
     """Estimate H of an fBm path by regression on CWT coefficients.
 
-    The scales are ``2**1, ..., 2**j_max``. A fraction ``trim`` of the samples is
+    The scales are a_j = 2^j for j = 1, …, j_max, and log₂ E[|W_x(a_j, b)|²] is
+    regressed on j (see HurstEstimate). A fraction ``trim`` of the samples is
     removed at both ends to limit boundary effects.
     """
     x = np.asarray(x, dtype=float)
