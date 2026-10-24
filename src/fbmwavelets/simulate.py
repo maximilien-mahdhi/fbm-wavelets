@@ -1,6 +1,6 @@
-"""Shared series generation for the command-line scripts.
+"""Shared series generation for the command-line tools.
 
-Both ``scripts/generate_fbm.py`` and ``scripts/make_gif.py`` expose the same generation
+Both ``fbm-generate`` and ``fbm-gif`` expose the same generation
 options (Hurst parameters, method, number of series, ...); they are defined once here.
 """
 

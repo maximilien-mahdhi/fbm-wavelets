@@ -2,9 +2,9 @@
 
 Examples
 --------
-    python scripts/run_experiment.py hurst-dwt
-    python scripts/run_experiment.py all --format pdf
-    python scripts/run_experiment.py all --no-usetex
+    fbm-experiment hurst-dwt
+    fbm-experiment all --format pdf
+    fbm-experiment all --no-usetex
 """
 
 from __future__ import annotations

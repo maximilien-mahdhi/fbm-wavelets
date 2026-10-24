@@ -1,13 +1,13 @@
 """Animated GIF of fBm paths drawn progressively, for one or several Hurst parameters.
 
-Generation options (-H/-r, -n, -N, -m, --levels, ...) are the same as in generate_fbm.py.
+Generation options (-H/-r, -n, -N, -m, --levels, ...) are the same as in fbm-generate.
 
 Examples
 --------
-    python scripts/make_gif.py -r 0.4 0.85 0.05
-    python scripts/make_gif.py -r 0.4 0.85 0.05 --dim 2
-    python scripts/make_gif.py -H 0.3 0.7 -n 3 --fps 30 --hold 2
-    python scripts/make_gif.py -H 0.5 -n 10 -c series --no-legend -m rmd
+    fbm-gif -r 0.4 0.85 0.05
+    fbm-gif -r 0.4 0.85 0.05 --dim 2
+    fbm-gif -H 0.3 0.7 -n 3 --fps 30 --hold 2
+    fbm-gif -H 0.5 -n 10 -c series --no-legend -m rmd
 """
 
 from __future__ import annotations

@@ -38,7 +38,7 @@ Exact sampling · three synthesis methods · Hurst estimation (DWT and CWT) · H
 
 <img src="results/fbm_animation_2d.gif" alt="Animated planar fBm paths for several Hurst parameters" width="80%">
 
-<sub><code>python scripts/make_gif.py -r 0.4 0.85 0.05</code> &nbsp;·&nbsp; <code>python scripts/make_gif.py -r 0.4 0.85 0.05 --dim 2</code></sub>
+<sub><code>fbm-gif -r 0.4 0.85 0.05</code> &nbsp;·&nbsp; <code>fbm-gif -r 0.4 0.85 0.05 --dim 2</code></sub>
 
 </div>
 
@@ -77,10 +77,18 @@ The instructions below target Linux (Debian/Ubuntu).
 ```bash
 git clone https://github.com/maximilien-mahdhi/fbm-wavelets.git
 cd fbm-wavelets
+uv sync
+```
+
+Versions are pinned in `uv.lock`. Without uv:
+
+```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -e . --group dev
 ```
+
+The installation provides three commands, declared in `[project.scripts]` of `pyproject.toml` : `fbm-experiment`, `fbm-generate` and `fbm-gif`. Run them with `uv run` (e.g. `uv run fbm-experiment hurst-dwt`), or directly once the virtual environment is active. The examples below omit the `uv run` prefix.
 
 Figures are rendered with LaTeX by default, which requires a LaTeX distribution:
 
@@ -89,19 +97,19 @@ sudo apt install texlive-latex-extra texlive-fonts-recommended cm-super dvipng
 ```
 
 > [!NOTE]
-> Without LaTeX, pass `--no-usetex` to any script to use matplotlib's built-in mathtext instead.
+> Without LaTeX, pass `--no-usetex` to any command to use matplotlib's built-in mathtext instead.
 
 ## Quick start
 
 ### Command line
 
 ```bash
-python scripts/run_experiment.py hurst-dwt                 # one experiment
-python scripts/run_experiment.py hurst-dwt fbm-paths       # several
-python scripts/run_experiment.py all                       # every default experiment
-python scripts/run_experiment.py hurst-error               # slow sweep over H (about 1 min)
-python scripts/run_experiment.py all --format pdf --seed 55
-python scripts/run_experiment.py all --no-usetex           # without LaTeX
+fbm-experiment hurst-dwt             # one experiment
+fbm-experiment hurst-dwt fbm-paths   # several
+fbm-experiment all                   # every default experiment
+fbm-experiment hurst-error           # slow sweep over H (about 1 min)
+fbm-experiment all --format pdf --seed 55
+fbm-experiment all --no-usetex       # without LaTeX
 ```
 
 | Option | Default | Description |
@@ -114,15 +122,15 @@ python scripts/run_experiment.py all --no-usetex           # without LaTeX
 
 ### Generate your own series
 
-`scripts/generate_fbm.py` generates fBm series for any Hurst parameters, with exact sampling or with one of the synthesis methods, without editing the code. Every frequently used option has a short flag.
+`fbm-generate` generates fBm series for any Hurst parameters, with exact sampling or with one of the synthesis methods, without editing the code. Every frequently used option has a short flag.
 
 ```bash
-python scripts/generate_fbm.py -H 0.3 0.6 -n 5                       # 5 series for H = 0.3 and 5 for H = 0.6
-python scripts/generate_fbm.py -r 0.4 0.85 0.05                      # H = 0.4, 0.45, ..., 0.85
-python scripts/generate_fbm.py -H 0.5 -n 10 -l single -c series      # 10 series, one color each
-python scripts/generate_fbm.py -H 0.3 0.6 -n 5 -m rmd -l single      # midpoint displacement
-python scripts/generate_fbm.py -H 0.2 0.5 0.8 -n 3 -v 50 --save-data
-python scripts/generate_fbm.py -H 0.7 -m wavelet --levels 10 --wavelet db8
+fbm-generate -H 0.3 0.6 -n 5                    # 5 series for H = 0.3 and 5 for H = 0.6
+fbm-generate -r 0.4 0.85 0.05                   # H = 0.4, 0.45, ..., 0.85
+fbm-generate -H 0.5 -n 10 -l single -c series   # 10 series, one color each
+fbm-generate -H 0.3 0.6 -n 5 -m rmd -l single   # midpoint displacement
+fbm-generate -H 0.2 0.5 0.8 -n 3 -v 50 --save-data
+fbm-generate -H 0.7 -m wavelet --levels 10 --wavelet db8
 ```
 
 | Option | Default | Description |
@@ -142,13 +150,13 @@ python scripts/generate_fbm.py -H 0.7 -m wavelet --levels 10 --wavelet db8
 
 ### Animated GIFs
 
-`scripts/make_gif.py` draws the paths progressively. It accepts every generation option of the table above (`-H`/`-r`, `-n`, `-N`, `-m`, `--levels`, `--wavelet`, `-v`, `--t0`/`--t1`, `--seed`), plus the following.
+`fbm-gif` draws the paths progressively. It accepts every generation option of the table above (`-H`/`-r`, `-n`, `-N`, `-m`, `--levels`, `--wavelet`, `-v`, `--t0`/`--t1`, `--seed`), plus the following.
 
 ```bash
-python scripts/make_gif.py -r 0.4 0.85 0.05                    # B^H_t against t
-python scripts/make_gif.py -r 0.4 0.85 0.05 --dim 2            # planar paths
-python scripts/make_gif.py -H 0.3 0.7 -n 3 --fps 30 --hold 2   # 3 series per H, 2 s pause at the end
-python scripts/make_gif.py -H 0.5 -n 10 -c series -m rmd       # one color per series, midpoint displacement
+fbm-gif -r 0.4 0.85 0.05                    # B^H_t against t
+fbm-gif -r 0.4 0.85 0.05 --dim 2            # planar paths
+fbm-gif -H 0.3 0.7 -n 3 --fps 30 --hold 2   # 3 series per H, 2 s pause at the end
+fbm-gif -H 0.5 -n 10 -c series -m rmd       # one color per series, midpoint displacement
 ```
 
 | Option | Default | Description |
@@ -345,12 +353,13 @@ fbm-wavelets/
 │   ├── estimation.py           # estimate_hurst_dwt, estimate_hurst_cwt, HurstEstimate
 │   ├── haar.py                 # xi, haar_correlation
 │   ├── spectrum.py             # time_frequency_spectrum
-│   ├── simulate.py             # generation options shared by the scripts
+│   ├── simulate.py             # generation options shared by the commands
 │   ├── plotting.py             # matplotlib / LaTeX setup, figure saving
-│   └── experiments.py          # experiment registry
-├── scripts/run_experiment.py   # run the predefined experiments
-├── scripts/generate_fbm.py     # generate fBm series for chosen H
-├── scripts/make_gif.py         # animated GIF of fBm paths
+│   ├── experiments.py          # experiment registry
+│   └── cli/                    # command-line tools, installed by [project.scripts]
+│       ├── run_experiment.py   # fbm-experiment: run the predefined experiments
+│       ├── generate_fbm.py     # fbm-generate: generate fBm series for chosen H
+│       └── make_gif.py         # fbm-gif: animated GIF of fBm paths
 ├── tests/                      # 35 tests
 └── results/                    # generated figures and table
 ```
@@ -415,9 +424,8 @@ fbm-wavelets/
 ### Development
 
 ```bash
-pip install -e . --group dev
-ruff check . && ruff format --check .
-pytest
+uv run ruff check . && uv run ruff format --check .
+uv run pytest
 ```
 
 The test suite (35 tests) covers:

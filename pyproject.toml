@@ -19,6 +19,11 @@ dependencies = [
     "rich>=13",
 ]
 
+[project.scripts]
+fbm-experiment = "fbmwavelets.cli.run_experiment:main"
+fbm-generate = "fbmwavelets.cli.generate_fbm:main"
+fbm-gif = "fbmwavelets.cli.make_gif:main"
+
 [dependency-groups]
 dev = ["pytest>=7", "ruff>=0.5"]
 
@@ -30,7 +35,7 @@ testpaths = ["tests"]
 
 [tool.ruff]
 line-length = 100
-src = ["src", "tests", "scripts"]
+src = ["src", "tests"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]

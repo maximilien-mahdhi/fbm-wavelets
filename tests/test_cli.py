@@ -1,13 +1,18 @@
 import subprocess
 import sys
-from pathlib import Path
-
-SCRIPT = Path(__file__).resolve().parents[1] / "scripts" / "generate_fbm.py"
 
 
 def run_cli(*args: str) -> subprocess.CompletedProcess:
     return subprocess.run(
-        [sys.executable, str(SCRIPT), "--no-usetex", "--log-level", "WARNING", *args],
+        [
+            sys.executable,
+            "-m",
+            "fbmwavelets.cli.generate_fbm",
+            "--no-usetex",
+            "--log-level",
+            "WARNING",
+            *args,
+        ],
         capture_output=True,
         text=True,
     )
@@ -40,12 +45,12 @@ def test_invalid_hurst_is_rejected(tmp_path):
 
 
 def test_make_gif_planar_paths(tmp_path):
-    script = Path(__file__).resolve().parents[1] / "scripts" / "make_gif.py"
     out = tmp_path / "paths.gif"
     result = subprocess.run(
         [
             sys.executable,
-            str(script),
+            "-m",
+            "fbmwavelets.cli.make_gif",
             "--no-usetex",
             "-r",
             "0.3",
@@ -70,12 +75,12 @@ def test_make_gif_planar_paths(tmp_path):
 
 
 def test_make_gif_several_series_with_synthesis(tmp_path):
-    script = Path(__file__).resolve().parents[1] / "scripts" / "make_gif.py"
     out = tmp_path / "paths.gif"
     result = subprocess.run(
         [
             sys.executable,
-            str(script),
+            "-m",
+            "fbmwavelets.cli.make_gif",
             "--no-usetex",
             "-H",
             "0.3",

@@ -2,11 +2,11 @@
 
 Examples
 --------
-    python scripts/generate_fbm.py -H 0.3 0.6 -n 5
-    python scripts/generate_fbm.py -r 0.4 0.85 0.05                  # H = 0.4, 0.45, ..., 0.85
-    python scripts/generate_fbm.py -H 0.5 -n 10 -l single -c series
-    python scripts/generate_fbm.py -H 0.3 0.6 -n 5 -m rmd -l single
-    python scripts/generate_fbm.py -H 0.7 -m wavelet --levels 10 --wavelet db8
+    fbm-generate -H 0.3 0.6 -n 5
+    fbm-generate -r 0.4 0.85 0.05                  # H = 0.4, 0.45, ..., 0.85
+    fbm-generate -H 0.5 -n 10 -l single -c series
+    fbm-generate -H 0.3 0.6 -n 5 -m rmd -l single
+    fbm-generate -H 0.7 -m wavelet --levels 10 --wavelet db8
 """
 
 from __future__ import annotations

@@ -72,7 +72,7 @@ class Path:
             raise ValueError("Animation requires a path of dimension >= 2.")
         fig, ax = plt.subplots(figsize=(9, 5.2))
         ax.grid(True, alpha=0.3)
-        # Same plot area as scripts/make_gif.py, so that the two animations line up.
+        # Same plot area as fbm-gif, so that the two animations line up.
         fig.subplots_adjust(left=0.08, right=0.84, bottom=0.12, top=0.96)
         # Equal scale on both axes, with limits widened to fill the wide frame.
         box = ax.get_position()
